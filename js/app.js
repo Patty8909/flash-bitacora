@@ -1,7 +1,16 @@
 $(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('#modal1').modal();
     $('#modal2').modal();
+    $('#modal3').modal();
+
+    $('.datepicker').pickadate({
+      selectMonths: true, 
+      selectYears: 15,
+      today: 'Today',
+      clear: 'Clear',
+      close: 'Ok',
+      closeOnSelect: false // Close upon selecting a date,
+    });
   });
 
 /*---------agregar imágenes--------------*/
@@ -27,6 +36,7 @@ $(document).ready(function(){
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
+/*------------termina agregar imágenes ------*/
 
 /*-----------agregar mensajes -------------*/
 var tituloMen = document.getElementById('name');
@@ -44,3 +54,18 @@ boton.addEventListener('click', function(event) {
   }
 })
 /*-----------termina agregar mensajes -------------*/
+
+/*----------agregar evento------------*/
+var ubic = document.getElementById('mylocation');
+var output = document.getElementById("out");
+var eventoPubli = document.getElementById('eventoPublicar');
+var fechaPubli = document.getElementById('fechaEventoPub');
+var evento = document.getElementById('evento');
+var fechaEvento = document.getElementById('fechaEvento');
+
+ubic.addEventListener('click', function(event) {
+  if (evento.value && fechaEvento.value) {
+    eventoPubli.textContent = evento.value;
+    fechaPubli.textContent = fechaEvento.value;
+  }
+})
