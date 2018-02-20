@@ -35,6 +35,14 @@ document.getElementById('fileImage').onchange = function(evt) {
     reader.readAsDataURL(f);
   }
 }
+
+var imprImage = document.getElementById('pubImage')
+imprImage.addEventListener('click', function() {
+  var imageModal = document.getElementById('listImprimir');
+  var contenedorImg = document.getElementById('list');
+  imageModal.appendChild(contenedorImg)
+
+})
 /*------------termina agregar imágenes ------*/
 
 /*-----------agregar mensajes -------------*/
@@ -78,7 +86,7 @@ ubic.addEventListener('click', function (event) {
   };
   navigator.geolocation.getCurrentPosition(success, error);
 })
-/*----------agregar evento y geolocalización------------*/
+/*----------termina agregar evento y geolocalización------------*/
 /*---------agregar audio y video--------------*/
 document.getElementById('fileAv').onchange = function (evt) {
   var files = evt.target.files;
@@ -92,12 +100,17 @@ document.getElementById('fileAv').onchange = function (evt) {
       return function (e) {
         var paragraph = document.createElement('div');
         paragraph.innerHTML = [`<video src=${e.target.result} controls></video>`].join('');
-        document.getElementById('list').insertBefore(paragraph, null);
+        document.getElementById('multi').insertBefore(paragraph, null);
       };
     })(f);
     reader.readAsDataURL(f);
   }
-
-
 }
+
+var imprVideo = document.getElementById('pubVideo')
+imprVideo.addEventListener('click', function() {
+  var videoMod = document.getElementById('multi');
+  var contenedorVideo = document.getElementById('videoHtml');
+  contenedorVideo.appendChild(videoMod)
+})
 /*------------termina agregar audio y video ------*/

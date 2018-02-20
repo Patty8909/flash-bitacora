@@ -18,8 +18,7 @@
           <div class="card-content black-text" id="mensajePublicado">
             <span class="card-title" id="titulomensajePub"></span>
             <p id="mensajePub"></p>
-          </div>
-          
+          </div>          
         </div>
       </div>
     </div>
@@ -27,11 +26,11 @@
 
 <!-- contenedor imágenes-->
 <div class="row">
-  <div class="col s12 m6">
+  <div class="col s12 m6 ">
     <div class="card blue-grey white">
       <div class="card-content black-text">
         <span class="card-title" ></span>
-        <div id="list"></div>
+        <div id="listImprimir"></div>
       </div>
       
     </div>
@@ -53,7 +52,7 @@
     </div>
 <!--fin contenedor evento y geolocalización-->
 
-    <div id="multi"></div>
+    <div id="videoHtml"></div>
 
 <!-- Modal audio y video estructura-->
 <div id="modal4" class="modal">
@@ -63,10 +62,22 @@
          <input placeholder="Título" id="modalAv" type="text" class="validate">
          <label for="modalAV">Título</label>
        </div>
-    <input type="file" id="fileAv" name="files[]" multiple />
+     
+    <form action="#">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input type="file" id="fileAv">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </form> 
+    <div id="multi"></div>
   </div>
   <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">PUBLICAR</a>
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="pubVideo">PUBLICAR</a>
     
   </div>
 </div>
@@ -131,10 +142,11 @@
                   <input class="file-path validate" type="text">
                 </div>
               </div>
-            </form>   
+            </form> 
+            <div id="list"></div>   
        </div>
        <div class="modal-footer">
-         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">PUBLICAR</a>
+         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="pubImage">PUBLICAR</a>
          
        </div>
      </div>
