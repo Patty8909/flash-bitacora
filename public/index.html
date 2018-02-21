@@ -107,8 +107,8 @@
       <div class="modal-content">
         <h4>Añade Audio y video</h4>
         <div class="input-field">
-          <input placeholder="Título" id="modalAv" type="text" class="validate">
           <label for="modalAV">Título</label>
+          <input placeholder="Título" id="modalAv" type="text" class="validate">
         </div>    
         <form action="#">
           <div class="file-field input-field">
@@ -129,11 +129,12 @@
     </div>
     <!--contenedor evento y geolocalización-->
     <div class="row">
-      <div class="col offset-m3 s12 m6">
+      <div class="col offset-m3 s12 m6 mapContainer">
         <div class="card blue-grey white">
           <div class="card-content black-text" id="out">
             <span class="card-title" id="eventoPublicar"></span>
             <p id="fechaEventoPub"></p>
+            <div id="ubichtml"></div>
           </div>
         </div>
       </div>
@@ -151,6 +152,13 @@
           <label for="fechaEvento">Fecha del evento</label>
         </div>
       </div>
+      <div class="container">
+        <div class="row">
+          <div class="col s6 m12">
+            <div id="map" ></div>          
+          </div>
+        </div>
+      </div>
       <div class="modal-footer">
         <a href="#!" id="mylocation" class="modal-action modal-close waves-effect waves-green btn-flat">PUBLICAR</a>
     
@@ -158,7 +166,6 @@
     </div>
     <!--Termina Modal evento-->     
   </main>
-  <footer>
     <!--********fixed action button********-->
     <div class="fixed-action-btn">
       <a class="btn-floating btn-large red">
@@ -189,21 +196,16 @@
     </div>
     <!--********fin fixed action button********-->
 
-  </footer>
-
-
-
-
-  
-
-
-   
-
-
     
+
+
+
     
     <script src="vendors/js/jquery.min.js"></script>
     <script type="text/javascript" src="vendors/materialize/js/materialize.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_W5VK_WAb9wIVkClJYJ7eEz7iurbj7w8&callback=initMap">
+    </script>
+    <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
