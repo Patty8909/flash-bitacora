@@ -13,7 +13,24 @@ $(document).ready(function(){
       closeOnSelect: false // Close upon selecting a date,
     });
   });
+/*-----------agregar mensajes -------------*/
+var tituloMen = document.getElementById('name');
+var men = document.getElementById('last_name');
+var boton = document.getElementById('boton');
 
+var contmenPub = document.getElementById('mensajePublicado');
+var tituPub = document.getElementById('titulomensajePub');
+var menPub = document.getElementById('mensajePub');
+
+boton.addEventListener('click', function (event) {
+  if (tituloMen.value && men.value) {
+    tituPub.innerHTML = "TITULO: " + tituloMen.value + '<hr>';
+    menPub.textContent = "MENSAJE: " + men.value;
+  }
+  tituloMen.value = '';
+  men.value = '';
+})
+/*-----------termina agregar mensajes -------------*/
 /*---------agregar imágenes--------------*/
 document.getElementById('fileImage').onchange = function(evt) {
   var files = evt.target.files; 
@@ -26,11 +43,15 @@ document.getElementById('fileImage').onchange = function(evt) {
     var reader = new FileReader();
     reader.onload = (function(theFile) {
       return function(e) {
+        var nameImput = document.getElementById('first_name').value;
+        var nameHtml = document.getElementById('nameHtml');
+        nameHtml.innerHTML = "TITULO DE LA IMAGEN : " + nameImput + '<hr>'
         var paragraph = document.createElement('p');
-        paragraph.innerHTML = ['<img class="thumb" src="', e.target.result,
+        paragraph.innerHTML = ['<img class="thumb photo" src="', e.target.result,
                           '" title="', escape(theFile.name), '"/>'].join('');
         document.getElementById('list').insertBefore(paragraph, null);
         };
+
     })(f);
     reader.readAsDataURL(f);
   }
@@ -40,27 +61,39 @@ var imprImage = document.getElementById('pubImage')
 imprImage.addEventListener('click', function() {
   var imageModal = document.getElementById('listImprimir');
   var contenedorImg = document.getElementById('list');
-  imageModal.appendChild(contenedorImg)
+  imageModal.appendChild(contenedorImg);
 
 })
 /*------------termina agregar imágenes ------*/
-
-/*-----------agregar mensajes -------------*/
-var tituloMen = document.getElementById('name');
-var men = document.getElementById('last_name');
-var boton = document.getElementById('boton');
-
-var contmenPub = document.getElementById('mensajePublicado');
-var tituPub = document.getElementById('titulomensajePub');
-var menPub = document.getElementById('mensajePub');
-
-boton.addEventListener('click', function(event) {
-  if (tituloMen.value && men.value) {
-    tituPub.textContent = tituloMen.value;
-    menPub.textContent = men.value;
+/*---------agregar audio y video--------------*/
+document.getElementById('fileAv').onchange = function (evt) {
+  var files = evt.target.files;
+  console.log(files);//retorna un filelist
+  for (var i = 0, f; f = files[i]; i++) {
+    if (!f.type.match('video.*')) {
+      continue;
+    }
+    var reader = new FileReader();
+    reader.onload = (function (theFile) {
+      return function (e) {
+        //agregar titulod evideo
+        var paragraph = document.createElement('div');
+        paragraph.innerHTML = [`<video src=${e.target.result} controls></video>`].join('');
+        document.getElementById('multi').insertBefore(paragraph, null);
+      };
+    })(f);
+    reader.readAsDataURL(f);
   }
+}
+
+var imprVideo = document.getElementById('pubVideo')
+imprVideo.addEventListener('click', function () {
+  var videoMod = document.getElementById('multi');
+  var contenedorVideo = document.getElementById('videoHtml');
+  contenedorVideo.appendChild(videoMod)
 })
-/*-----------termina agregar mensajes -------------*/
+/*------------termina agregar audio y video ------*/
+
 /*----------agregar evento y geolocalización------------*/
 var ubic = document.getElementById('mylocation');
 var output = document.getElementById("out");
@@ -87,30 +120,3 @@ ubic.addEventListener('click', function (event) {
   navigator.geolocation.getCurrentPosition(success, error);
 })
 /*----------termina agregar evento y geolocalización------------*/
-/*---------agregar audio y video--------------*/
-document.getElementById('fileAv').onchange = function (evt) {
-  var files = evt.target.files;
-  console.log(files);//retorna un filelist
-  for (var i = 0, f; f = files[i]; i++) {
-    if (!f.type.match('video.*')) {
-      continue;
-    }
-    var reader = new FileReader();
-    reader.onload = (function (theFile) {
-      return function (e) {
-        var paragraph = document.createElement('div');
-        paragraph.innerHTML = [`<video src=${e.target.result} controls></video>`].join('');
-        document.getElementById('multi').insertBefore(paragraph, null);
-      };
-    })(f);
-    reader.readAsDataURL(f);
-  }
-}
-
-var imprVideo = document.getElementById('pubVideo')
-imprVideo.addEventListener('click', function() {
-  var videoMod = document.getElementById('multi');
-  var contenedorVideo = document.getElementById('videoHtml');
-  contenedorVideo.appendChild(videoMod)
-})
-/*------------termina agregar audio y video ------*/
