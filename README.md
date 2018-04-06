@@ -3,6 +3,9 @@ El presente proyecto es una bitácora con la que se puede agregar mensajes, imá
 
 ![desktop](https://user-images.githubusercontent.com/32307161/38396925-5a782b3e-3900-11e8-87f7-0b8413d25a2d.png)
 
+## Desarrollado para 
+[Laboratoria](http://laboratoria.la)
+
 ### Objetivo:
 
 + Crear una bitácora con la que podrás agregar mensajes, imágenes, audio, video, ubicaciones y fechas.
